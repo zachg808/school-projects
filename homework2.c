@@ -18,7 +18,6 @@
 ****************************************************************/
 
 #include<stdio.h>
-#include<ctype.h>
 
 /*****************************************************************
 //
@@ -83,11 +82,7 @@ void print_table(int);
 
 int main(int argc, char* argv[])
 {
-    int user_input;
- 
-    user_input = user_interface();
-
-    print_table(user_input);
+    print_table(user_interface());
 
     return 0;
 }
@@ -109,7 +104,7 @@ int is_multiple(int num)
     {
         return 1;
     }
-        else
+    else
     {
         return 0;
     }
