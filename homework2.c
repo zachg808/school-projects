@@ -15,6 +15,10 @@
 //  DESCRIPTION:
 //  This is a program for Homework 2 that was written using c code to output a table that determines if the values leading up to the user's input from 0 are multiples of 4.
 //
+//  REFERENCES: (line 107) https://www.geeksforgeeks.org/clearing-the-input-buffer-in-cc/ 
+//              (line 119): https://www.geeksforgeeks.org/modulo-operator-in-c-cpp-with-examples/ 
+//              (line 139 and 143): https://www.delftstack.com/howto/c/printf-align-columns-in-c/
+//
 ****************************************************************/
 
 #include<stdio.h>
@@ -89,11 +93,23 @@ int main(int argc, char* argv[])
 
 int user_interface()
 {
-    int user_input;
+    int user_input, returnvalue;
 
     printf("This a program that takes the user's input (integer) then checks if every integer up to the one entered by the user is a multiple of 4 and outputs the results.\n");
     printf("Enter maximum number to show: ");
-    scanf("%d", &user_input);
+    
+    returnvalue = scanf("%d", &user_input);
+
+    while (returnvalue != 1)
+    {
+        if (returnvalue != 1)
+        {  
+            while ((getchar()) != '\n'); 
+
+            printf("Please enter a number: ");
+            returnvalue = scanf("%d", &user_input);
+        }
+    }
 
     return user_input;
 }
